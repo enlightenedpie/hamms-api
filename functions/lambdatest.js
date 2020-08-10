@@ -5,7 +5,7 @@ var years = fs.readFile(
   path.resolve(__dirname) + "/store/years.json",
   "utf8",
   (err, data) => {
-    console.log(path.resolve(__dirname))
+    console.log(path.resolve(__filename))
   }
 )
 
