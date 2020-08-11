@@ -1,9 +1,8 @@
 {
   "scripts": {
-    "prebuild": "for d in functions/; do cp utils/headers.json \"$d\"; done",
     "build": "npm i",
-    "prepush": "git add -A",
-    "push": "git commit -a && git push"
+    "prepush": "find functions/* -type d -maxdepth 1 -exec cp utils/headers.json {} \\;",
+    "push": "git add -A && git commit -a && git push"
   },
   "husky": {
     "hooks": {
