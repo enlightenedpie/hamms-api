@@ -16,8 +16,6 @@ var options = {
 var years;
 
 exports.handler = async (event, context, callback) => {
-  var postData = JSON.stringify({})
-
   if (!years) {
     var req = await axios(options)
       .then((res) => console.log(res.data))
