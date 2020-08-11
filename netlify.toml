@@ -1,2 +1,4 @@
 [build]
-  functions = "functions/"
+  functions = "./functions"
+  command = "yarn build"
+  NODE_ENV = "12"

@@ -1,7 +1,9 @@
-const https = require('https')
+const axios = require('axios')
 
 var options = {
-  method: 'POST',
+  method: 'post',
+  url: "https://testws.atdconnect.com/rs/3_6/fitment/year",
+  data: {},
   headers: {
     "Accept": "application/json",
     "Content-Type": "application/json",
@@ -13,29 +15,12 @@ var options = {
 
 var years;
 
-exports.handler = (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
   var postData = JSON.stringify({})
 
   if (!years) {
-    var req = https.request("https://testws.atdconnect.com/rs/3_6/fitment/year",
-    options,
-    (res) => {
-      console.log(res)
-      /* var body = "";
-      res.on('data', (data) => {
-        body += data;
-      });
-      res.on('end', () => {
-        console.log(body);
-        years = body;
-      }) */
-    })
-
-    req.on('error', (e) => {
-      years = e;
-    });
-    req.write(postData);
-    req.end();
+    var req = await axios(options)
+      .then((res) => console.log(res.data))
   }
 
   callback(null, {
