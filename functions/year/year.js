@@ -7,7 +7,7 @@ const axios = require("axios"),
 const WEEK_IN_SECONDS = 3600 * 24 * 7;
 
 const headers = JSON.parse(
-  readFileSync(resolve(__dirname) + "/headers.json", "utf-8")
+  fs.readFileSync(path.resolve(__dirname) + "/headers.json", "utf-8")
 );
 
 var options = {
