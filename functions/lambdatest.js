@@ -31,7 +31,7 @@ exports.handler = (event, context, callback) => {
     })
 
     req.on('error', (e) => {
-      console.error(e);
+      years = e;
     });
     req.write(postData);
     req.end();
