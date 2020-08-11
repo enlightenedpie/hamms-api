@@ -26,14 +26,14 @@ exports.handler = async (event, context, callback) => {
     cacheHit = false;
   }
 
-  console.log(process.env.YEARS);
+  console.log(JSON.parse(process.env.YEARS));
 
   callback(null, {
     statusCode: 200,
     body: JSON.stringify({
       timestamp: Math.floor(Date.now() / 1000),
       cached: cacheHit,
-      data: years
+      data: process.env.YEARS
     })
   });
 };
