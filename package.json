@@ -11,10 +11,12 @@
   },
   "devDependencies": {
     "husky": "^4.2.5",
+    "jest": "^26.3.0",
     "prettier": "^1.17.0",
     "pretty-quick": "^1.10.0"
   },
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "faunadb": "^2.14.2"
   }
 }
