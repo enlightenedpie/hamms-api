@@ -1,17 +1,14 @@
 "use strict";
 
-import axios from "axios";
-import { resolve } from "path";
-import { readFileSync } from "fs";
-
-import { headers } from "../../utils/headers";
+const axios = require("axios"),
+  path = require("path"),
+  fs = require("fs");
 
 const WEEK_IN_SECONDS = 3600 * 24 * 7;
 
-/* const headers = readFileSync(
-  resolve(__dirname) + "/headers.json",
-  "utf-8"
-); */
+const headers = JSON.parse(
+  readFileSync(resolve(__dirname) + "/headers.json", "utf-8")
+);
 
 var options = {
   method: "post",
@@ -22,8 +19,7 @@ var options = {
 
 var years;
 
-export async function handler(event, context, callback) {
-  console.log(headers);
+exports.handler = async (event, context, callback) => {
   let cacheHit = true;
 
   if (!years) {
@@ -39,4 +35,4 @@ export async function handler(event, context, callback) {
       data: years
     })
   });
-}
+};
