@@ -2,3 +2,8 @@
   functions = "functions"
   command = "npm run build"
   NODE_ENV = "12"
+
+[[redirects]]
+  from = "/vehicle/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
