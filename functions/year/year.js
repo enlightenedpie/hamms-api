@@ -9,6 +9,7 @@ const headers = fs.readFile(
   "utf-8",
   (err, data) => {
     if (err) throw err;
+    console.log(data);
     return data;
   }
 );
@@ -23,8 +24,6 @@ var options = {
 var years;
 
 exports.handler = async (event, context, callback) => {
-  console.log(headers);
-  return true;
   let cacheHit = true;
 
   if (!years) {
