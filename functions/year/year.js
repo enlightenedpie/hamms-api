@@ -4,13 +4,9 @@ const fs = require("fs");
 
 const WEEK_IN_SECONDS = 3600 * 24 * 7;
 
-const headers = fs.readFile(
+const headers = fs.readFileSync(
   path.resolve(__dirname) + "/headers.json",
-  "utf-8",
-  (err, data) => {
-    if (err) throw err;
-    return JSON.parse(data);
-  }
+  "utf-8"
 );
 
 var options = {
