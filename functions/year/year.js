@@ -23,7 +23,8 @@ var options = {
 var years;
 
 exports.handler = async (event, context, callback) => {
-  console.log;
+  console.log(headers);
+  return true;
   let cacheHit = true;
 
   if (!years) {
