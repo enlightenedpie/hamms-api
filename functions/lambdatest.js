@@ -16,12 +16,14 @@ var options = {
 var years;
 
 exports.handler = async (event, context, callback) => {
+  let cacheHit = true;
   if (!years) {
     var req = await axios(options).then(res => (years = res.data));
+    cacheHit = false;
   }
 
   callback(null, {
     statusCode: 200,
-    body: JSON.stringify({ years })
+    body: JSON.stringify({ cached: cacheHit, data: years })
   });
 };
