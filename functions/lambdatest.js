@@ -1,8 +1,7 @@
-const http = require('http')
+const https = require('https')
 
 var options = {
   method: 'POST',
-  protocol: 'https',
   headers: {
     "Accept": "application/json",
     "Content-Type": "application/json",
@@ -15,7 +14,7 @@ var options = {
 var years
 
 exports.handler = async (event, context, callback) => {
-  years = years || await http.request("https://testws.atdconnect.com/rs/3_6/fitment/year",
+  years = years || await https.request("https://testws.atdconnect.com/rs/3_6/fitment/year",
   options,
   (response) => response)
 
