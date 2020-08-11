@@ -9,20 +9,20 @@ const headers = fs.readFileSync(
   "utf-8"
 );
 
-var makes;
+var models;
 
 exports.handler = async (event, context, callback) => {
   var options = {
     method: "post",
-    url: "https://testws.atdconnect.com/rs/3_6/fitment/make",
+    url: "https://testws.atdconnect.com/rs/3_6/fitment/model",
     data: JSON.parse(event.body) || {},
     ...JSON.parse(headers)
   };
 
   let cacheHit = true;
 
-  if (!makes) {
-    var req = await axios(options).then(res => (makes = res.data));
+  if (!models) {
+    var req = await axios(options).then(res => (models = res.data));
     cacheHit = false;
   }
 
@@ -31,7 +31,7 @@ exports.handler = async (event, context, callback) => {
     body: JSON.stringify({
       timestamp: Math.floor(Date.now() / 1000),
       cached: cacheHit,
-      data: makes
+      data: models
     })
   });
 };
