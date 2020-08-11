@@ -4,6 +4,7 @@
     "prepush": "find functions/* -type d -maxdepth 1 -exec cp utils/headers.json {} \\;",
     "push": "git add -A && git commit -a && git push"
   },
+  "type": "module",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
