@@ -20,14 +20,15 @@ exports.handler = (event, context, callback) => {
     var req = https.request("https://testws.atdconnect.com/rs/3_6/fitment/year",
     options,
     (res) => {
-      var body = "";
+      console.log(res)
+      /* var body = "";
       res.on('data', (data) => {
         body += data;
       });
       res.on('end', () => {
         console.log(body);
         years = body;
-      })
+      }) */
     })
 
     req.on('error', (e) => {
