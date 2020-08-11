@@ -26,7 +26,7 @@ exports.handler = async (event, context, callback) => {
     cacheHit = false;
   }
 
-  console.log(JSON.parse(process.env.YEARS));
+  console.log(typeof process.env.YEARS);
 
   callback(null, {
     statusCode: 200,
