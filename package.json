@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "prebuild": "cd functions",
+    "build": "cd functions && npm i",
+    "prepush": "git add -A",
+    "push": "git commit -a && git push"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0"
+  }
+}
