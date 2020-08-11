@@ -13,8 +13,8 @@ var options = {
 
 var years
 
-exports.handler = async (event, context, callback) => {
-  years = years || await https.request("https://testws.atdconnect.com/rs/3_6/fitment/year",
+exports.handler = (event, context, callback) => {
+  years = years || https.request("https://testws.atdconnect.com/rs/3_6/fitment/year",
   options,
   (response) => response)
 
