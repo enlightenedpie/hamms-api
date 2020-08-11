@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "prebuild": "cd functions",
+    "prebuild": "for d in functions/; do cp utils/headers.json \"$d\"; done",
     "build": "npm i",
     "prepush": "git add -A",
     "push": "git commit -a && git push"
