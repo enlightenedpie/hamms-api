@@ -16,15 +16,17 @@ var options = {
   ...JSON.parse(headers)
 };
 
-var years;
-
 exports.handler = async (event, context, callback) => {
   let cacheHit = true;
 
-  if (!years) {
-    var req = await axios(options).then(res => (years = res.data));
+  console.log(process.env.YEARS);
+
+  if (!process.env.YEARS) {
+    var req = await axios(options).then(res => (process.env.YEARS = res.data));
     cacheHit = false;
   }
+
+  console.log(process.env.YEARS);
 
   callback(null, {
     statusCode: 200,
