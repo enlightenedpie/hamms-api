@@ -9,8 +9,7 @@ const headers = fs.readFile(
   "utf-8",
   (err, data) => {
     if (err) throw err;
-    console.log(data);
-    return data;
+    return JSON.parse(data);
   }
 );
 
