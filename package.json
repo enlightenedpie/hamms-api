@@ -1,7 +1,5 @@
 {
   "scripts": {
-    "prebuild": "cd functions",
-    "build": "cd functions && npm i",
     "prepush": "git add -A",
     "push": "git commit -a && git push"
   },
