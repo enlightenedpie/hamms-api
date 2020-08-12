@@ -6,6 +6,10 @@ const axios = require("axios"),
 
 const WEEK_IN_SECONDS = 3600 * 24 * 7;
 
+const ENUM = {
+  routes: ["year", "make", "model", "trim"]
+};
+
 const headers = JSON.parse(
   fs.readFileSync(path.resolve(__dirname) + "/headers.json", "utf-8")
 );

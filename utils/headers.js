@@ -1,9 +1,0 @@
-export default {
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    clientId: "HAMMS_TIRE",
-    "Accept-Language": "en-US",
-    Authorization: "Basic aGFtbXN0aXJlYXBpOmhhbW1zdGlyZVRlc3QyMA=="
-  }
-};
