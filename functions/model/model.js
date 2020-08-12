@@ -9,8 +9,6 @@ const headers = fs.readFileSync(
   "utf-8"
 );
 
-var models;
-
 exports.handler = async (event, context, callback) => {
   var options = {
     method: "post",
@@ -19,18 +17,19 @@ exports.handler = async (event, context, callback) => {
     ...JSON.parse(headers)
   };
 
-  let cacheHit = true;
+  var models = await axios(options).then(res => res.data);
+
+  /* let cacheHit = true;
 
   if (!models) {
-    var req = await axios(options).then(res => (models = res.data));
     cacheHit = false;
-  }
+  } */
 
   callback(null, {
     statusCode: 200,
     body: JSON.stringify({
       timestamp: Math.floor(Date.now() / 1000),
-      cached: cacheHit,
+      cached: false, //cacheHit,
       data: models
     })
   });
