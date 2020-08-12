@@ -29,7 +29,7 @@ exports.handler = async (event, context, callback) => {
     statusCode: 200,
     body: JSON.stringify({
       timestamp: Math.floor(Date.now() / 1000),
-      cached: cacheHit,
+      cached: false, //cacheHit,
       data: makes
     })
   });
