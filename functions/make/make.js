@@ -9,9 +9,9 @@ const headers = fs.readFileSync(
   "utf-8"
 );
 
-var makes;
-
 exports.handler = async (event, context, callback) => {
+  var makes;
+
   var options = {
     method: "post",
     url: "https://testws.atdconnect.com/rs/3_6/fitment/make",
@@ -22,7 +22,8 @@ exports.handler = async (event, context, callback) => {
   let cacheHit = true;
 
   if (!makes) {
-    var req = await axios(options).then(res => (makes = res.data));
+    var req = await axios(options).then(res => res.data);
+    console.log(req);
     cacheHit = false;
   }
 
