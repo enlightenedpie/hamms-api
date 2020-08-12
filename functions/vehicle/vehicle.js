@@ -18,6 +18,8 @@ const headers = fs.readFileSync(
 exports.handler = async (event, context, callback) => {
   let { qvar } = event.queryStringParameters;
 
+  console.log(qvar, ENUM.routes.indexOf(qvar));
+
   if (ENUM.routes.indexOf(qvar) < 0)
     return new Error("This route is undefined or not allowed.");
 
