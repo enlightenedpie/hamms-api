@@ -5,5 +5,5 @@
 
 [[redirects]]
   from = "/vehicle/*"
-  to = "/.netlify/functions/:splat"
+  to = "/.netlify/functions/vehicle?qvar=:splat"
   status = 200

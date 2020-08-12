@@ -7,7 +7,7 @@ const axios = require("axios"),
 const WEEK_IN_SECONDS = 3600 * 24 * 7;
 
 const ENUM = {
-  routes: ["year", "make", "model", "trim"]
+  routes: ["year", "make", "model", "trim", "trim-option"]
 };
 
 const headers = JSON.parse(
