@@ -16,7 +16,7 @@ const headers = fs.readFileSync(
 );
 
 exports.handler = async (event, context, callback) => {
-  let qvar = event.path.replace(/^\/?/g, "").explode("/")[1],
+  let qvar = event.path.replace(/^\/?/g, "").split("/")[1],
     status = 200,
     result;
 
