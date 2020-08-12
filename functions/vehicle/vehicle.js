@@ -16,24 +16,28 @@ const headers = fs.readFileSync(
 );
 
 exports.handler = async (event, context, callback) => {
-  let { qvar } = event.queryStringParameters;
+  let { qvar } = event.queryStringParameters,
+    result,
+    status = 200;
 
-  console.log(qvar, ENUM.routes.indexOf(qvar));
+  console.log(event);
 
-  if (ENUM.routes.indexOf(qvar) < 0)
-    return new Error("This route is undefined or not allowed.");
+  if (ENUM.routes.indexOf(qvar) < 0) {
+    result = new Error("This route is undefined or not allowed.");
+    status = 400;
+  } else {
+    var options = {
+      method: "post",
+      url: "https://testws.atdconnect.com/rs/3_6/fitment/" + qvar,
+      data: JSON.parse(event.body) || {},
+      headers: JSON.parse(headers)
+    };
 
-  var options = {
-    method: "post",
-    url: "https://testws.atdconnect.com/rs/3_6/fitment/" + qvar,
-    data: JSON.parse(event.body) || {},
-    headers: JSON.parse(headers)
-  };
-
-  var result = await axios(options).then(res => res.data);
+    result = await axios(options).then(res => res.data);
+  }
 
   callback(null, {
-    statusCode: 200,
+    statusCode: status,
     body: JSON.stringify({
       timestamp: Math.floor(Date.now() / 1000),
       data: result
