@@ -10,8 +10,6 @@ const headers = fs.readFileSync(
 );
 
 exports.handler = async (event, context, callback) => {
-  var makes;
-
   var options = {
     method: "post",
     url: "https://testws.atdconnect.com/rs/3_6/fitment/make",
@@ -19,13 +17,13 @@ exports.handler = async (event, context, callback) => {
     ...JSON.parse(headers)
   };
 
-  let cacheHit = true;
+  var makes = await axios(options).then(res => res.data);
+
+  /* let cacheHit = true;
 
   if (!makes) {
-    var req = await axios(options).then(res => res.data);
-    console.log(req);
     cacheHit = false;
-  }
+  } */
 
   callback(null, {
     statusCode: 200,
