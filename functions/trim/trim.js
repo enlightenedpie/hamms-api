@@ -14,7 +14,7 @@ exports.handler = async (event, context, callback) => {
     method: "post",
     url: "https://testws.atdconnect.com/rs/3_6/fitment/trim",
     data: JSON.parse(event.body) || {},
-    ...JSON.parse(headers)
+    headers: JSON.parse(headers)
   };
 
   var trims = await axios(options).then(res => res.data);

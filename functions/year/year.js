@@ -18,7 +18,7 @@ var options = {
   method: "post",
   url: "https://testws.atdconnect.com/rs/3_6/fitment/year",
   data: {},
-  ...headers
+  headers: JSON.parse(headers)
 };
 
 var years;
