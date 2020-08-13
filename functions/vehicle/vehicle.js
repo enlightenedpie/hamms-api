@@ -42,7 +42,7 @@ exports.handler = async (event, context, callback) => {
     return true;
   });
 
-  if (ಠ_ಠ) {
+  if (!ಠ_ಠ) {
     result = { error: "Your request is malformed. Please try again" };
     status = 400;
   }
