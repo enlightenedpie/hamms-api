@@ -3,6 +3,7 @@
 const axios = require("axios");
 const path = require("path");
 const fs = require("fs");
+const { generateKeyPair } = require("crypto");
 
 const WEEK_IN_SECONDS = 3600 * 24 * 7;
 
@@ -33,7 +34,9 @@ exports.handler = async (event, context, callback) => {
       b = Object.keys(body).sort();
 
     for (var i = 0; i < a.length; ++i) {
-      if (arr[i] !== b[i]) {
+      if (b.length === 0) break;
+
+      if (a[i] !== b[i]) {
         return false;
       }
     }
