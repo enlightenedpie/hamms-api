@@ -33,10 +33,11 @@ exports.handler = async (event, context, callback) => {
     let a = obj.shape.sort(),
       b = Object.keys(body).sort();
 
-    console.log(a, b, body);
+    console.log(a[0], b[0]);
 
     for (var i = 0; i < a.length; ++i) {
-      if (b.length === 0) break;
+      if (b.length === 0 && a.length === 0) break;
+
       if (a[i] !== b[i]) {
         return false;
       }
