@@ -7,7 +7,13 @@ const fs = require("fs");
 const WEEK_IN_SECONDS = 3600 * 24 * 7;
 
 const ENUM = {
-  routes: ["year", "make", "model", "trim", "trim-option"]
+  routes: [
+    { path: "year", shape: [] },
+    { path: "make", shape: ["year"] },
+    { path: "model", shape: ["year", "make"] },
+    { path: "trim", shape: ["year", "make", "model"] },
+    { path: "trim-option", shape: ["year", "make", "model", "trim"] }
+  ]
 };
 
 const headers = fs.readFileSync(
@@ -17,22 +23,37 @@ const headers = fs.readFileSync(
 
 exports.handler = async (event, context, callback) => {
   let qvar = event.path.replace(/^\/?/g, "").split("/")[1],
+    url = "https://testws.atdconnect.com/rs/3_6/fitment/",
+    body = JSON.parse(event.body) || {},
     status = 200,
     result;
 
-  console.log(qvar);
+  let ಠ_ಠ = ENUM.routes.some((obj, iii, arr) => {
+    let a = obj.shape.sort(),
+      b = Object.keys(body).sort();
 
-  if (ENUM.routes.indexOf(qvar) < 0) {
-    result = new Error("This route is undefined or not allowed.");
+    for (var i = 0; i < a.length; ++i) {
+      if (arr[i] !== b[i]) {
+        return false;
+      }
+    }
+
+    url = url + obj.path;
+    return true;
+  });
+
+  if (ಠ_ಠ) {
+    result = { error: "Your request is malformed. Please try again" };
     status = 400;
-  } else {
+  }
+
+  if (status !== 400) {
     var options = {
       method: "post",
-      url: "https://testws.atdconnect.com/rs/3_6/fitment/" + qvar,
-      data: JSON.parse(event.body) || {},
+      url: url,
+      data: body,
       headers: JSON.parse(headers)
     };
-
     result = await axios(options).then(res => res.data);
   }
 
